@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../axiosConfig";
+import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,7 +12,6 @@ import {
   Legend,
 } from "chart.js";
 import styles from "../styles/AdminPage.module.css";
-import { API_ENDPOINTS } from "../apiConfig";
 
 ChartJS.register(
   CategoryScale,
@@ -102,7 +101,7 @@ const AdminPage = ({ handleLogout }) => {
       setIsLoading(true);
       setError(null);
       const token = localStorage.getItem("token");
-      const response = await axios.get(API_ENDPOINTS.adminDashboard, {
+      const response = await axios.get("/api/admin-dashboard/", {
         headers: { Authorization: `Token ${token}` },
       });
       setDashboardData(response.data);

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../axiosConfig";
+import axios from "axios";
 import styles from "../styles/ConfirmationPage.module.css";
-import { API_ENDPOINTS } from "../apiConfig";
 
 const ConfirmationPage = () => {
   const [otp, setOTP] = useState("");
@@ -13,7 +12,7 @@ const ConfirmationPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        API_ENDPOINTS.verifyOtp,
+        "http://localhost:8000/api/verify-otp/",
         {
           otp,
         },

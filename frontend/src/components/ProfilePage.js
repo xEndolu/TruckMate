@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/ProfilePage.module.css";
 import Navbar from "./Navbar";
 import defaultProfilePic from "../assets/images/default-profile-pic.png";
-import axios from "../axiosConfig";
-import { API_ENDPOINTS } from "../apiConfig";
+import axios from "axios";
 
 const ProfilePage = ({ user, handleLogout }) => {
   const [email, setEmail] = useState("");
@@ -13,7 +12,7 @@ const ProfilePage = ({ user, handleLogout }) => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem("token"); // Retrieve the token from local storage
-        const response = await axios.get(API_ENDPOINTS.userProfile, {
+        const response = await axios.get("/api/user-profile/", {
           headers: {
             Authorization: `Token ${token}`, // Include the token in the headers with the correct prefix
           },
