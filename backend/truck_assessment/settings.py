@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -13,7 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'truckmate-backend.onrender.com']
 
 # Application definition
 
@@ -60,16 +61,21 @@ TEMPLATES = [
 ]
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'truck_assessment_db',
-        'USER': 'admin',
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'truck_assessment_db',
+            'USER': 'admin',
+            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Custom user model
 AUTH_USER_MODEL = 'core.User'
