@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import styles from "../styles/Assessment.module.css";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const Assessment = () => {
   const [assessmentData, setAssessmentData] = useState(null);
@@ -22,11 +23,15 @@ const Assessment = () => {
       formData.append("image", location.state.imageFile);
 
       try {
-        const response = await axios.post("/assess_damage/", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axios.post(
+          API_ENDPOINTS.assessDamage,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         console.log("Backend response:", response.data);
         setAssessmentData(response.data);

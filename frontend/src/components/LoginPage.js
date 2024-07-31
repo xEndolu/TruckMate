@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/LoginPage.module.css";
-import axios from "axios";
+import axios from "../axiosConfig";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const LoginPage = ({ onSignupClick, setUser, setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -15,19 +16,16 @@ const LoginPage = ({ onSignupClick, setUser, setIsLoggedIn }) => {
     e.preventDefault();
     try {
       console.log("Attempting login...");
-      const loginResponse = await axios.post(
-        "http://localhost:8000/api/login/",
-        {
-          username,
-          password,
-        }
-      );
+      const loginResponse = await axios.post(API_ENDPOINTS.login, {
+        username,
+        password,
+      });
       const token = loginResponse.data.token;
       console.log("Login successful, token received:", token);
       localStorage.setItem("token", token);
 
       console.log("Fetching user data...");
-      const userResponse = await axios.get("http://localhost:8000/api/user/", {
+      const userResponse = await axios.get(API_ENDPOINTS.user, {
         headers: { Authorization: `Token ${token}` },
       });
 

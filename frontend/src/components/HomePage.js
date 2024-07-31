@@ -5,8 +5,9 @@ import backgroundImage from "../assets/images/truck_home.jpg";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import useLogout from "./Logout";
-import axios from "axios";
+import axios from "../axiosConfig";
 import Navbar from "./Navbar";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const HomePage = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,7 +23,7 @@ const HomePage = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
     if (token) {
       setIsLoggedIn(true);
       axios
-        .get("http://localhost:8000/api/user/", {
+        .get(API_ENDPOINTS.user, {
           headers: { Authorization: `Token ${token}` },
         })
         .then((response) => {

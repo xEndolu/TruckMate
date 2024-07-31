@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import styles from "../styles/SignUpPage.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PasswordRequirementsModal from "./PasswordRequirementsModal";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const SignUpPage = ({ onLoginClick }) => {
   const [username, setUsername] = useState("");
@@ -29,7 +30,7 @@ const SignUpPage = ({ onLoginClick }) => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/register/",
+        API_ENDPOINTS.register,
         {
           username,
           email,
