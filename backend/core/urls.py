@@ -22,7 +22,6 @@ urlpatterns = [
     path('register/', views.UserRegistrationView.as_view(), name='user-registration'),
     path('assess_damage/', csrf_exempt(assess_damage), name='assess_damage'),
     path('api/', include((api_patterns, 'api'))),
-    path('api/admin-dashboard/', AdminDashboardView.as_view(), name='api_admin_dashboard'),
     path('api/user-profile/', user_profile, name='user_profile'),
     path('api/user/', get_user_data, name='get_user_data'),
 ]
