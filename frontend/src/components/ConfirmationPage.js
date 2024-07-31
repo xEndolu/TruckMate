@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import styles from "../styles/ConfirmationPage.module.css";
 import { API_ENDPOINTS } from "../apiConfig";
 

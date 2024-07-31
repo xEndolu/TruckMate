@@ -1,8 +1,7 @@
 // src/apiConfig.js
 
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  "https://your-backend-name.onrender.com";
+export const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export const API_ENDPOINTS = {
   // Main API endpoints
@@ -23,4 +22,4 @@ export const API_ENDPOINTS = {
   getUserData: `${API_BASE_URL}/api/user/`,
 };
 
-export default API_BASE_URL;
+export default API_ENDPOINTS;

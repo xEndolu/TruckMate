@@ -5,7 +5,7 @@ import backgroundImage from "../assets/images/truck_home.jpg";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import useLogout from "./Logout";
-import axios from "axios";
+import axios from "../axiosConfig";
 import Navbar from "./Navbar";
 import { API_ENDPOINTS } from "../apiConfig";
 

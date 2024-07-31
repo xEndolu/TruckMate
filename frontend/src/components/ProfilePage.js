@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/ProfilePage.module.css";
 import Navbar from "./Navbar";
 import defaultProfilePic from "../assets/images/default-profile-pic.png";
-import axios from "axios";
+import axios from "../axiosConfig";
 import { API_ENDPOINTS } from "../apiConfig";
 
 const ProfilePage = ({ user, handleLogout }) => {

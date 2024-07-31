@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import styles from "../styles/SignUpPage.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PasswordRequirementsModal from "./PasswordRequirementsModal";

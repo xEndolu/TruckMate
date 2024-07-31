@@ -15,6 +15,7 @@ import ConfirmationPage from "./components/ConfirmationPage";
 import Assessment from "./components/Assessment";
 import AdminPage from "./components/AdminPage";
 import useLogout from "./components/Logout";
+import { API_ENDPOINTS } from "./apiConfig";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +29,7 @@ function App() {
       console.log("Token:", token);
       if (token) {
         try {
-          const response = await axios.get("http://localhost:8000/api/user/", {
+          const response = await axios.get(API_ENDPOINTS.user, {
             headers: { Authorization: `Token ${token}` },
           });
           console.log("User data:", response.data);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/Recommendation.module.css";
 import Navbar from "./Navbar";
-import axios from "axios";
+import axios from "../axiosConfig";
 import { API_ENDPOINTS } from "../apiConfig";
 
 const Recommendation = ({ isLoggedIn, user, handleLogout }) => {

@@ -117,6 +117,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS settings
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://truckmate-frontend.onrender.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 # CSRF settings
 CSRF_COOKIE_SECURE = False
 
