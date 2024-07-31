@@ -441,7 +441,7 @@ def calculate_priority_score(severity_score, estimated_repair_cost, urgency_leve
 logger = logging.getLogger(__name__)
 client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
-model = YOLO('last.pt')
+model = YOLO(r'C:\Users\kennj\Desktop\tas\truck_assessment\backend\last.pt')
 
 CHATBOT_PROMPT = """You are an expert in truck damage assessment. Provide a concise assessment of the damages, including replacement/repair recommendations and costs in Philippine Pesos (₱). For each detected damage, provide the following information:
 

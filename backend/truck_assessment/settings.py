@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -12,9 +11,9 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'truckmate-backend.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -61,21 +60,16 @@ TEMPLATES = [
 ]
 
 # Database
-if os.getenv('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'truck_assessment_db',
+        'USER': 'admin',
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'truck_assessment_db',
-            'USER': 'admin',
-            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
+}
 
 # Custom user model
 AUTH_USER_MODEL = 'core.User'
@@ -114,15 +108,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://truckmate-frontend.onrender.com",
-]
-
-CORS_ALLOW_CREDENTIALS = True
+# CORS settings
+CORS_ORIGIN_ALLOW_ALL = True
 
 # CSRF settings
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 
 # Gmail OAuth 2.0 configuration
 EMAIL_BACKEND = 'core.gmail_auth.OAuthEmailBackend'
