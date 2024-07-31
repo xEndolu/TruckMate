@@ -12,7 +12,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'truckmate-backend.onrender.com']
 
@@ -114,9 +114,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS settings
-CORS_ORIGIN_ALLOW_ALL = True
-
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://truckmate-frontend.onrender.com",
@@ -125,7 +122,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 # CSRF settings
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 # Gmail OAuth 2.0 configuration
 EMAIL_BACKEND = 'core.gmail_auth.OAuthEmailBackend'
